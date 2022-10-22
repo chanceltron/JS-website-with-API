@@ -1,0 +1,74 @@
+.modal,
+.full-site-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  transition: all 0.25s ease-in;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 99;
+  background-color: var(--bg);
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.modal-dialog .modal-header h3 {
+  color: var(--color-text-base);
+}
+
+.modal-header {
+  display: flex;
+  padding-bottom: 1rem;
+  justify-content: end;
+}
+
+.modal-body {
+}
+
+.modal-body .team-text {
+  display: flex;
+  align-items: flex-end;
+}
+
+.team-text .header-md {
+  display: flex;
+  text-align: right;
+  margin: 0;
+}
+
+.team-text .sub-header {
+  margin-left: 4rem;
+  margin-bottom: 0.6em;
+}
+
+.modal-header .fa-xmark {
+  font-size: 1.5rem;
+  transition: all 0.5s ease-in;
+}
+
+.modal-header .fa-xmark:hover {
+  transition: scale(1.2);
+  cursor: pointer;
+}
+
+.full-site-modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+[data-animation='zoomInOut'].full-site-modal {
+  transform: scale(0.2);
+}
+
+[data-animation='zoomInOut'].full-site-modal.is-visible {
+  transform: none;
+}

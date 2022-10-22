@@ -22,6 +22,19 @@ nav {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 0.6em;
+}
+
+::-webkit-scrollbar-track {
+  margin-block: 0.2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9c9c9c;
+  border-radius: 20px;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -87,7 +100,7 @@ button {
   height: 65px;
   padding-left: 30px;
   padding-right: 30px;
-  box-shadow: 0 32px 54px rgba(3, 3, 3, 0.12);
+  /* box-shadow: 0 6px 12px rgba(3, 3, 3, 0.08); */
 }
 
 .btn:not(:disabled):not(.disabled),
@@ -100,6 +113,25 @@ button:not(:disabled):not(.disabled) {
   color: #fff;
   background-color: #495fef;
   border-color: #495fef;
+}
+
+.btn-primary:hover,
+.btn-primary a:hover {
+  background-color: #8593f1;
+  border-color: #8593f1;
+}
+
+.btn-reject,
+.btn-reject a {
+  color: #fff;
+  background-color: #d63939;
+  border-color: #d63939;
+}
+
+.btn-reject:hover,
+.btn-reject a:hover {
+  background-color: #db6363;
+  border-color: #db6363;
 }
 
 .round-pill {
@@ -120,6 +152,4 @@ button:not(:disabled):not(.disabled) {
 .sub-header {
   font-size: 1.3125rem;
   line-height: 1.5;
-  padding-top: 1.25rem;
-  padding-bottom: 1.875rem;
 }

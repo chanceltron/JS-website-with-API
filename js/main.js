@@ -1,67 +1,44 @@
-const pokeapi = 'https://pokeapi.co/api/v2/pokemon/';
+const modalOpen = '[data-open]';
+const modalClose = '[data-close]';
+const isVisible = 'is-visible';
 
-const root = document.documentElement;
+/* Modal */
+const openModal = document.querySelectorAll(modalOpen);
+const closeModal = document.querySelectorAll(modalClose);
 
-const cardWrapper = document.querySelector('.card-wrapper');
+// Modal "open buttons"
 
-const buildCard = (pokemon) => {
-  let cardDiv = document.createElement('div');
-  cardDiv.classList.add('card', `${pokemon.type}`);
-  cardDiv.style.backgroundImage = `url(../assets/svg/${pokemon.type}-card-bg.svg)`;
-  cardDiv.innerHTML = `
-  <div class="card-header">
-    <div class="pokemon-name">${pokemon.name}</div>
-    <div class="pokemon-info">
-      <div class="pokemon-hp">${pokemon.hp} HP</div>
-      <div class="pokemon-type">
-        <img src="assets/png/${pokemon.type}-type.png" alt="" />
-      </div>
-    </div>
-  </div>
-  <div class="pokemon-sprite-wrapper">
-    <img src="https://img.pokemondb.net/artwork/${pokemon.name}.jpg" alt="" />
-  </div>
-  `;
-  let abilitiesContainer = document.createElement('div');
-  abilitiesContainer.classList.add('pokemon-abilities');
-  pokemon.abilities.forEach((ability) => {
-    const abilityName = ability.ability.name;
-    let abilityDiv = document.createElement('div');
-    abilityDiv.innerText = `${abilityName}`;
-    abilitiesContainer.appendChild(abilityDiv);
+for (const elm of openModal) {
+  elm.addEventListener('click', function () {
+    const modalId = this.dataset.open;
+    document.getElementById(modalId).classList.add(isVisible);
   });
-
-  cardWrapper.appendChild(cardDiv);
-  cardDiv.appendChild(abilitiesContainer);
-};
-
-// pokemonImage = (res,)
-
-const getPokemon = async (url) => {
-  const rawData = await (await fetch(url)).json();
-  const pokemon = await {
-    id: rawData.id,
-    name: rawData.name,
-    hp: rawData.stats[0].base_stat,
-    type: rawData.types[0].type.name,
-    abilities: rawData.abilities,
-    image: 'https://img.pokemondb.net/artwork/' + rawData.name + '.jpg',
-  };
-  await buildCard(pokemon);
-};
-
-// getPokemon(pokeapi + 4);
-
-for (let i = 0; i < 30; i++) {
-  const excludedList = [0, 774, 778];
-  const randomNumber = () => {
-    let number = Math.floor(Math.random() * 905);
-    if (excludedList.includes(number)) {
-      randomNumber();
-    } else {
-      return number;
-    }
-  };
-
-  getPokemon(pokeapi + randomNumber());
 }
+
+for (const elm of closeModal) {
+  elm.addEventListener('click', function () {
+    this.parentElement.parentElement.parentElement.classList.remove(isVisible);
+  });
+}
+
+// Modal
+document.addEventListener('click', (e) => {
+  if (e.target === document.querySelector('.modal.is-visible')) {
+    document.querySelector('.modal.is-visible').classList.remove(isVisible);
+  }
+});
+
+document.addEventListener('keyup', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelector('.modal.is-visible').classList.remove(isVisible);
+  }
+});
+
+//
+const createTypeList = () => {
+  console.log(types);
+};
+
+setTimeout(() => {
+  createTypeList();
+}, 500);
