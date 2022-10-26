@@ -37,7 +37,7 @@ const buildCard = (pokemon) => {
     <img src=${pokemon.image} />
   </div>
   <div class="card-popup-box">
-    <a class="btn btn-primary round-pill">Add to Team</a>
+    <a class="btn btn-primary round-pill" data-favorite="favorite">Add to Team</a>
   </div>
   `;
   let abilitiesContainer = document.createElement('div');
@@ -54,16 +54,5 @@ const buildCard = (pokemon) => {
 };
 
 for (let i = 1; i < 152; i++) {
-  // const excludedList = [0, 774, 778];
-  // const randomNumber = () => {
-  //   let number = Math.floor(Math.random() * 151);
-  //   if (excludedList.includes(number)) {
-  //     randomNumber();
-  //   } else {
-  //     return number;
-  //   }
-  // };
-
-  // getPokemon(pokeapi + randomNumber());
   getPokemon(pokeapi + i);
 }

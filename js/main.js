@@ -2,6 +2,10 @@ const modalOpen = '[data-open]';
 const modalClose = '[data-close]';
 const isVisible = 'is-visible';
 
+// const removeCard = (pokemonID) => {
+//   for (const card of cards)
+// };
+
 /* Modal */
 const openModal = document.querySelectorAll(modalOpen);
 const closeModal = document.querySelectorAll(modalClose);
