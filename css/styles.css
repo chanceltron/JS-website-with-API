@@ -7,12 +7,9 @@
   color: #fff;
 }
 
-.card-container {
-  height: 70vh;
-  overflow: auto;
-}
-
 .card-wrapper {
+  height: 70vh;
+  overflow-y: scroll;
   padding: 1em 1em;
   margin: 0 auto;
   background-color: aqua;
@@ -27,8 +24,8 @@
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.3);
   border: 0.5rem solid #ffe164;
   border-radius: 12px;
-  width: 300px;
-  height: 420px;
+  width: 325px;
+  height: 455px;
   position: relative;
 }
 
@@ -88,17 +85,33 @@
   object-fit: scale-down;
 }
 
-.pokemon-abilities {
-  padding: 1em 3em;
-  font-size: 1em;
-  font-weight: 600;
-  text-align: center;
+.pokemon-ability .ability-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.pokemon-moves {
+  padding: 1rem 1.7rem;
+  font-size: 0.8rem;
+  font-weight: 500;
   line-height: 1.8;
 }
 
-.pokemon-abilities div {
+.pokemon-moves div {
   padding-top: 0.2em;
   border-bottom: 1px solid;
+}
+
+.pokemon-moves .move-name {
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.pokemon-moves .move-description {
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .card-popup-box {

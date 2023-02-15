@@ -31,9 +31,6 @@
   justify-content: end;
 }
 
-.modal-body {
-}
-
 .modal-body .team-text {
   display: flex;
   align-items: flex-end;
