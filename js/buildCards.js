@@ -2,11 +2,13 @@ const pokeapi = 'https://pokeapi.co/api/v2/pokemon/';
 
 const root = document.documentElement;
 const cardWrapper = document.querySelector('.card-wrapper');
+const favoritesContainer = document.getElementById('favoritesContainer');
 
 const getRandomNum = (maxNum) => {
   return Math.floor(Math.random() * maxNum) + 1;
 };
 
+const favorites = [];
 const types = [];
 
 pokemonTypeCount = (type) => {
@@ -17,6 +19,17 @@ pokemonTypeCount = (type) => {
     }
   });
   return count;
+};
+
+const mapFavoritePokemon = () => {
+  while (favoritesContainer.firstChild) {
+    favoritesContainer.removeChild(favoritesContainer.firstChild);
+  }
+  favorites.map((fav) => {
+    const favoriteCard = buildCard(fav);
+    const favoriteCardWithRemove = addRemoveBtn(favoriteCard, fav);
+    favoritesContainer.appendChild(favoriteCardWithRemove);
+  });
 };
 
 const getPokemonMove = (moveName) => {
@@ -48,30 +61,24 @@ const updatePokemonMoves = async (pokemon) => {
   return updatedPokemon;
 };
 
-const getPokemon = (url) => {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      return {
-        id: data.id,
-        name: data.name,
-        hp: data.stats[0].base_stat,
-        type: data.types[0].type.name,
-        moves: [
-          { name: data.moves[getRandomNum(data.moves.length)].move.name },
-          { name: data.moves[getRandomNum(data.moves.length)].move.name },
-        ],
-        image: 'https://img.pokemondb.net/artwork/' + data.name + '.jpg',
-      };
-    })
-    .then((pokemon) => {
-      return updatePokemonMoves(pokemon);
-    })
-    .then((pokemon) => {
-      buildCard(pokemon);
-      types.push(pokemon.type);
-    })
-    .catch((err) => {});
+const getPokemon = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  const pokemon = await {
+    id: data.id,
+    name: data.name,
+    hp: data.stats[0].base_stat,
+    type: data.types[0].type.name,
+    moves: [
+      { name: data.moves[getRandomNum(data.moves.length)].move.name },
+      { name: data.moves[getRandomNum(data.moves.length)].move.name },
+    ],
+    image: 'https://img.pokemondb.net/artwork/' + data.name + '.jpg',
+  };
+  const updatedPokemon = await updatePokemonMoves(pokemon);
+  const card = await buildCard(updatedPokemon);
+  const cardWithFav = await addFavBtn(card, updatedPokemon);
+  await cardWrapper.appendChild(cardWithFav);
 };
 
 const buildCard = (pokemon) => {
@@ -91,10 +98,6 @@ const buildCard = (pokemon) => {
   <div class="pokemon-sprite-wrapper">
     <img src=${pokemon.image} />
   </div>
-
-  <div class="card-popup-box">
-    <a class="btn btn-primary round-pill favorite-btn">Add to Team</a>
-  </div>
   `;
   let movesContainer = document.createElement('div');
   movesContainer.classList.add('pokemon-moves');
@@ -105,10 +108,58 @@ const buildCard = (pokemon) => {
     <span class='move-description'>${move.description}</span>
     `;
     movesContainer.appendChild(moveDiv);
+    cardDiv.appendChild(movesContainer);
   });
+  return cardDiv;
+};
 
-  cardWrapper.appendChild(cardDiv);
-  cardDiv.appendChild(movesContainer);
+const addFavBtn = (cardDiv, pokemon) => {
+  let cardPopupBox = document.createElement('div');
+  cardPopupBox.classList.add('card-popup-box');
+  cardPopupBox.innerHTML = `
+  <a class="btn btn-primary round-pill favorite-btn">Add to Team</a>
+  `;
+  cardDiv.appendChild(cardPopupBox);
+  const favoriteBtn = cardDiv.querySelector('.favorite-btn');
+  favoriteBtn.addEventListener('click', () => {
+    favortiePokemon(pokemon);
+  });
+  return cardDiv;
+};
+
+const addRemoveBtn = (cardDiv, pokemon) => {
+  let cardPopupBox = document.createElement('div');
+  cardPopupBox.classList.add('card-popup-box');
+  cardPopupBox.innerHTML = `
+  <a class="btn btn-primary round-pill remove-btn">Remove from Team</a>
+  `;
+  cardDiv.appendChild(cardPopupBox);
+  const removeBtn = cardDiv.querySelector('.remove-btn');
+  removeBtn.addEventListener('click', () => {
+    removePokemon(pokemon);
+  });
+  return cardDiv;
+};
+
+const favortiePokemon = (pokemon) => {
+  if (favorites.length < 6) {
+    favorites.push(pokemon);
+    mapFavoritePokemon();
+  } else {
+    alert('You can only have 6 pokemon on your team!');
+  }
+};
+
+const removePokemon = (pokemon) => {
+  const index = favorites.indexOf(pokemon);
+  favorites.splice(index, 1);
+  mapFavoritePokemon();
+};
+
+const buildFavorites = () => {
+  favorites.map((pokemon) => {
+    buildCard(pokemon);
+  });
 };
 
 for (let i = 0; i < 30; i++) {
