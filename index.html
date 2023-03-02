@@ -17,6 +17,7 @@
       <section class="navigation"></section>
       <section class="card-container">
         <div class="card-wrapper"></div>
+        <div class="gradient"></div>
       </section>
       <section class="dashboard">
         <div class="dashboard-wrapper">
@@ -29,6 +30,9 @@
                 data-open="team-page"
                 >View My Team</a
               >
+              <div id="typeCountContainer">
+                <ul id="typeList"></ul>
+              </div>
             </div>
           </div>
         </div>
@@ -38,16 +42,13 @@
       <div id="team-page" class="full-site-modal" data-animation="zoomInOut">
         <div class="container-fluid">
           <header class="modal-header">
+            <h2 class="header-md">My Team</h2>
             <i class="fa-solid fa-xmark" data-close></i>
           </header>
           <div class="modal-body">
             <div class="team-text">
-              <h2 class="header-md">My<br />Team</h2>
-              <div class="sub-header">
-                <div id="favoritesContainer"></div>
-              </div>
+              <div id="favoritesContainer"></div>
             </div>
-            <div class="team-card-wrapper"></div>
           </div>
         </div>
       </div>

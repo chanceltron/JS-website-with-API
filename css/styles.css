@@ -7,12 +7,25 @@
   color: #fff;
 }
 
+.card-container {
+  position: relative;
+}
+
+.gradient {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(0deg, #fff, transparent);
+  height: 50px;
+  width: 100%;
+  z-index: 1;
+}
+
 .card-wrapper {
   height: 70vh;
   overflow-y: scroll;
   padding: 1em 1em;
   margin: 0 auto;
-  background-color: aqua;
+  background: linear-gradient(0deg, #fff, aqua);
   max-width: 1280px;
   display: flex;
   flex-wrap: wrap;
@@ -164,4 +177,25 @@
   letter-spacing: -0.5px;
   font-weight: 700;
   margin-bottom: 0;
+}
+
+.dashboard-content-body {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dashboard-content-body #typeList {
+  /* display: flex;
+  flex-direction: column; */
+  columns: 3;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.2rem;
+  list-style: none;
+  text-transform: capitalize;
 }
