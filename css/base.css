@@ -50,6 +50,7 @@ a {
   color: #495fef;
   text-decoration: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 h1,
@@ -101,7 +102,6 @@ button {
   height: 65px;
   padding-left: 30px;
   padding-right: 30px;
-  /* box-shadow: 0 6px 12px rgba(3, 3, 3, 0.08); */
 }
 
 .btn:not(:disabled):not(.disabled),
@@ -133,6 +133,16 @@ button:not(:disabled):not(.disabled) {
 .btn-reject a:hover {
   background-color: #db6363;
   border-color: #db6363;
+}
+
+.btn-circle {
+  padding: 0.6rem;
+  border-radius: 50%;
+}
+
+.btn-circle:hover {
+  background-color: #495fef;
+  color: #fff;
 }
 
 .round-pill {

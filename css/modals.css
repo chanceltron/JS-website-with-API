@@ -78,6 +78,23 @@
   height: 409.5px;
 }
 
+#favoritesContainer .card .card-header {
+  padding: 0.5rem 1rem;
+}
+
+#favoritesContainer .pokemon-name,
+.pokemon-info {
+  font-size: 1rem;
+}
+
+#favoritesContainer .pokemon-moves {
+  padding: 0.5rem 1rem;
+}
+
+#favoritesContainer .pokemon-moves .move-description {
+  font-size: 0.72rem;
+}
+
 [data-animation='zoomInOut'].full-site-modal {
   transform: scale(0.2);
 }

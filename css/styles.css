@@ -3,6 +3,16 @@
   --card-height: 35rem;
 }
 
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  background-color: #fff;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.3);
+  font-size: 24px;
+}
+
 .card.dark {
   color: #fff;
 }
@@ -188,8 +198,6 @@
 }
 
 .dashboard-content-body #typeList {
-  /* display: flex;
-  flex-direction: column; */
   columns: 3;
   flex-wrap: wrap;
   justify-content: center;
