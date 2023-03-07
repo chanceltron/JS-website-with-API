@@ -3,6 +3,7 @@ const root = document.documentElement;
 const cardWrapper = document.querySelector('.card-wrapper');
 const teamContainer = document.getElementById('favoritesContainer');
 const typeList = document.getElementById('typeList');
+// const sortBtns = document.querySelectorAll('.btn-sort');
 const sortAZ = document.getElementById('sortAZ');
 const sortZA = document.getElementById('sortZA');
 const sort19 = document.getElementById('sort19');
@@ -207,6 +208,14 @@ const buildTypeCount = () => {
 };
 
 // Sort Event Listeners
+// sortBtns.forEach((btn) => {
+//   btn.addEventListener('click', () => {
+//     const sortType = btn.dataset.sortBy;
+//     const sortReverse = btn.dataset.sortDir !== 'asc';
+//     sort(sortType, sortReverse);
+//   });
+// });
+
 sortAZ.addEventListener('click', () => {
   sortType = 'name';
   sortReverse = false;
